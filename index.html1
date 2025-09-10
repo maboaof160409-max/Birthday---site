@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday!</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      font-family: 'Poppins', sans-serif;
+      text-align: center;
+      overflow: hidden;
+      color: #fff;
+    }
+
+    h1 {
+      font-size: 3.5em;
+      font-weight: 700;
+      background: linear-gradient(45deg, #ff6ec4, #7873f5);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: fadeIn 2s ease-out forwards;
+    }
+
+    p {
+      font-size: 1.5em;
+      margin-top: 10px;
+      color: #ddd;
+      animation: fadeIn 3s ease-out forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Button */
+    button {
+      margin-top: 20px;
+      padding: 12px 24px;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background: linear-gradient(45deg, #ff6ec4, #7873f5);
+      color: #fff;
+      font-weight: bold;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(255,255,255,0.4);
+    }
+
+    /* Hidden surprise message */
+    #surprise {
+      margin-top: 25px;
+      font-size: 1.5em;
+      color: #fff;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease;
+    }
+    #surprise.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Confetti */
+    .confetti {
+      position: absolute;
+      width: 8px;
+      height: 14px;
+      background-color: red;
+      top: -20px;
+      opacity: 0.9;
+      border-radius: 2px;
+      animation: fall linear forwards;
+    }
+    @keyframes fall {
+      to {
+        transform: translateY(110vh) rotateZ(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>🎉 Happy Birthday, my femboy ❤️ 🎂</h1>
+  <p>Wishing you a day full of joy, cuteness, and love ✨</p>
+
+  <button onclick="showSurprise()">🎁 Click for a surprise</button>
+
+  <div id="surprise">💌 Surprise message goes here! 💌</div>
+
+  <!-- Happy Birthday song -->
+  <audio autoplay loop>
+    <source src="https://www2.cs.uic.edu/~i101/SoundFiles/HappyBirthday.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    // Confetti generator
+    function createConfetti() {
+      const confetti = document.createElement("div");
+      confetti.classList.add("confetti");
+      document.body.appendChild(confetti);
+
+      confetti.style.left = Math.random() * window.innerWidth + "px";
+      confetti.style.backgroundColor = ["#ff0", "#0ff", "#f0f", "#fff", "#0f0", "#f00"][Math.floor(Math.random()*6)];
+      confetti.style.animationDuration = (3 + Math.random() * 3) + "s";
+
+      setTimeout(() => confetti.remove(), 6000);
+    }
+    setInterval(createConfetti, 200);
+
+    // Surprise message toggle
+    function showSurprise() {
+      document.getElementById("surprise").classList.toggle("show");
+    }
+  </script>
+</body>
+</html>
